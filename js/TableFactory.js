@@ -1,12 +1,46 @@
 class TableFactory {
 	static createTable(tableData) {
 		let tableEl = document.createElement('table');
-
-		tableData['rows'].forEach((rowData, rowNumber) => {
-			tableEl.appendChild(this.createTableRow(rowData, rowNumber));
-		});
+		tableEl.appendChild(this.createTableHeader(tableData));
+		tableEl.appendChild(this.createTableFooter(tableData));
+		tableEl.appendChild(this.createTableBody(tableData));
 
 		return tableEl;
+	}
+
+	static createTableHeader(tableData) {
+		let tableHeader = document.createElement('thead');
+
+		for(let cellData in tableData['rows'][0]) {
+			let cellEl = document.createElement('th');
+			cellEl.textContent = cellData;
+			tableHeader.appendChild(cellEl);
+		}
+
+		return tableHeader;
+	}
+
+	static createTableFooter(tableData) {
+		let tableFooter = document.createElement('tfoot');
+
+		for(let cellData in tableData['rows'][0]) {
+			let cellEl = document.createElement('td');
+			cellEl.setAttribute('category', cellData);
+			cellEl.setAttribute('type', 'total');
+			tableFooter.appendChild(cellEl);
+		}
+
+		return tableFooter;
+	}
+
+	static createTableBody(tableData) {
+		let tableBody = document.createElement('tbody');
+
+		tableData['rows'].forEach((rowData, rowNumber) => {
+			tableBody.appendChild(this.createTableRow(rowData, rowNumber));
+		});
+
+		return tableBody;
 	}
 
 	static createTableRow(rowData, rowNumber = null) {
