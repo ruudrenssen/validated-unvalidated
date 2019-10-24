@@ -2,6 +2,12 @@
 	font-family: monospace;
 }
 
+th,
 td {
 	text-align: right;
+}
+
+th:first-child,
+td:first-child {
+	text-align: left;
 }
