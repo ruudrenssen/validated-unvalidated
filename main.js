@@ -20,7 +20,6 @@ let validatedData = {
 		}
 	]
 }
-
 let unvalidatedData = {
 	'rows':[
 		{
@@ -43,9 +42,6 @@ let unvalidatedData = {
 		}
 	]
 }
-
 let combinedData = DataUtilities.combineData(validatedData, unvalidatedData);
+let view = new View(document.body, combinedData);
 
-let tableEl = TableFactory.createTable(combinedData);
-
-document.body.appendChild(tableEl);

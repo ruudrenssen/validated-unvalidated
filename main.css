@@ -11,3 +11,8 @@ th:first-child,
 td:first-child {
 	text-align: left;
 }
+
+[data-type='unvalidated'] {
+	font-style: italic;
+	opacity: .6;
+}

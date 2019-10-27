@@ -6,12 +6,24 @@
 		<title>Prototype</title>
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-
-		<script src='js/DataUtilities.js'></script>
-		<script src='js/TableFactory.js'></script>
 	</head>
 	<body>
-		<h1>prototype</h1>
+		<form role="navigation" data-navigation>
+			<label for="reporting-year-selection">Reporting year:</label>
+			<select id="reporting-year-selection" data-year-selection>
+			</select>
+			<input type="checkbox" id="unvalidated-only-checkbox" data-unvalidated-only-checkbox/>
+			<label for="unvalidated-only-checkbox">
+				show only unvalidated data
+			</label>
+		</form>
+		<main>
+			<h1>Validated / unvalidated prototype</h1>
+			<div data-table></div>
+		</main>
 	</body>
+	<script src='js/DataUtilities.js'></script>
+	<script src='js/Table.js'></script>
+	<script src='js/View.js'></script>
 	<script src='main.js'></script>
 </html>

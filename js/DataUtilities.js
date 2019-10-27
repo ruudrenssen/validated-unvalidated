@@ -23,4 +23,14 @@ class DataUtilities {
 
 		return combinedData;
 	}
+
+	static subset(dataset, end, start = 0) {
+		console.log(dataset)
+		let rows = [];
+		for(let i = start; i < end; i++) {
+			rows.push(dataset['rows'][i]);
+		}
+		dataset['rows'] = rows;
+		return dataset;
+	}
 }
