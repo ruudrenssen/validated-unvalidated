@@ -33,4 +33,12 @@ class DataUtilities {
 		dataset['rows'] = rows;
 		return dataset;
 	}
+
+	static rowTitles(dataset) {
+		let titles = [];
+		dataset['rows'].forEach(row => {
+			titles.push(row.title.value);
+		});
+		return(titles);
+	}
 }

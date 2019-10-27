@@ -42,6 +42,9 @@ let unvalidatedData = {
 		}
 	]
 }
-let combinedData = DataUtilities.combineData(validatedData, unvalidatedData);
-let view = new View(document.body, combinedData);
-
+let data = {
+	'unvalidated': unvalidatedData,
+	'validated': validatedData
+}
+// let combinedData = DataUtilities.combineData(validatedData, unvalidatedData);
+let view = new View(document.body, data);

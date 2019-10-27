@@ -85,7 +85,8 @@ class TableUpdater {
 	}
 
 	updateBody(data) {
-		// this.element.querySelector('tbody') = TableFactory.createTableBody(data);
+		this.element.querySelector('tbody').remove();
+		this.element.appendChild(TableFactory.createTableBody(data));
 	}
 
 	updateTotals() {
