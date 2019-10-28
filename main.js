@@ -42,7 +42,7 @@ let validatedData = {
 		},
 		{
 			'title': { 'value': '2013', 'type': 'title'},
-			'Fraud': { 'value': 960610, 'type': 'validated'},
+			'Fraud': { 'value': 690610, 'type': 'validated'},
 			'Vandalism': { 'value': 141135, 'type': 'validated'},
 			'Traffic': { 'value': 131335, 'type': 'validated'},
 			'Violence': { 'value': 103510, 'type': 'validated'},
@@ -126,7 +126,7 @@ let unvalidatedData = {
 		},
 		{
 			'title': { 'value': '2013', 'type': 'title'},
-			'Fraud': { 'value': 960612, 'type': 'unvalidated'},
+			'Fraud': { 'value': 690611, 'type': 'unvalidated'},
 			'Vandalism': { 'value': 141131, 'type': 'unvalidated'},
 			'Traffic': { 'value': 131332, 'type': 'unvalidated'},
 			'Violence': { 'value': 103509, 'type': 'unvalidated'},

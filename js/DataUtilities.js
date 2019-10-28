@@ -41,4 +41,14 @@ class DataUtilities {
 		});
 		return(titles);
 	}
+
+	static TotalRow(row) {
+		let total = 0;
+		for(let item in row) {
+			if(row[item].type !== 'title') {
+				total += row[item].value;
+			}
+		}
+		return total;
+	}
 }

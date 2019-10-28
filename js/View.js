@@ -13,9 +13,12 @@ class View {
         this.contentElements = this.element.querySelectorAll('.layout__main');
 
         this.tableEl = TableFactory.createTable(this.displayData);
+        this.chartEl = ChartFactory.createChart(this.displayData);
         this.tableUpdater = new TableUpdater(this.tableEl);
-        const container = element.querySelector('[data-table-container]');
-        container.appendChild(this.tableEl);
+        const tableContainer = element.querySelector('[data-table-container]');
+        const chartContainer = element.querySelector('[data-chart-container]');
+        tableContainer.appendChild(this.tableEl);
+        chartContainer.appendChild(this.chartEl);
 
         this.populateYearSelection(DataUtilities.rowTitles(this.displayData));
         this.updateView();
