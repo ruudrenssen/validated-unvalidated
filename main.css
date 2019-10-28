@@ -58,6 +58,7 @@ th {
 
 td {
 	width: 11ch;
+	white-space: nowrap;
 }
 
 th:first-child,
@@ -81,17 +82,12 @@ span {
 .layout {
 	display: grid;
 	gap: 1.62rem;
-	grid-template-areas: "disclaimer disclaimer disclaimer"
-	". . ."
+	grid-template-areas: ". . ."
 	". title ."
 	". table ."
 	". . .";
-		grid-template-rows: 3.75rem min-content 1fr min-content minmax(2rem, 1fr);
+		grid-template-rows: 1fr min-content auto 1fr;
 		grid-template-columns: 1fr auto 1fr;
-}
-
-.layout__disclaimer {
-	grid-area: disclaimer;
 }
 
 .layout__title {
@@ -100,13 +96,23 @@ span {
 }
 
 .layout__table {
+	display: grid;
+	grid-template-rows: auto 1.5rem;
 	grid-area: table;
-	align-self: end;
+}
+
+.disclaimer-container {
+	position: relative;
 }
 
 .disclaimer {
-	position: relative;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin: 0;
 	padding: .6rem;
+	font-weight: 300;
 	color: var(--fg-color);
 	background-color: var(--mark-color);
 }
@@ -114,13 +120,15 @@ span {
 .disclaimer:before {
 	float: left;
 	content: '!';
+	font-weight: 600;
 	font-size: 1.75rem;
 	width: 2.25rem;
 	height: 2.25rem;
 	border: 2px solid var(--fg-color);
 	text-align: center;
 	margin-right: .6rem;
-	margin-left: .6rem;
+	margin-bottom: .6rem;
+	margin-left: 0;
 	border-radius: 50%;
 }
 
@@ -128,22 +136,22 @@ span {
 	position: absolute;
 	content: '';
 	bottom: 100%;
-	left: 12.75rem;
+	left: 12.6rem;
 	border-right: .36rem solid transparent;
 	border-left: .36rem solid transparent;
 	border-bottom: .36rem solid var(--mark-color);
 }
 
 .legend-container {
-	position: relative;
-}
-
-.legend {
 	position: absolute;
 	top: 100%;
 	right: 0;
-	padding: .4rem 0 0 0;
+}
 
+.legend {
+	position: relative;
+	padding: .4rem 0 0 0;
+	text-align: right;
 	background-color: var(--bg-color);
 	color: var(--fg-color);
 	font-size: .75rem;
@@ -153,10 +161,14 @@ span {
 	content: '';
 	position: absolute;
 	top: 0;
-	right: .36rem;
+	right: 22ch;
 	border-right: .36rem solid transparent;
 	border-left: .36rem solid transparent;
 	border-top: .36rem solid var(--fg-color);
+}
+
+.navigation__item {
+	margin-right: .6rem;
 }
 
 [role='navigation'] {
@@ -165,10 +177,6 @@ span {
 	padding: .6rem;
 	background-color: var(--fg-color);
 	color: var(--bg-color);
-}
-
-[role='navigation'] * {
-	margin-right: .6rem;
 }
 
 .validated,
@@ -185,7 +193,6 @@ span {
 	font-family: 'IBM Plex Mono', monospace;
 }
 
-.unvalidated:before,
 [data-type='unvalidated']:before {
 	font-size: .75rem;
 	display: inline-block;

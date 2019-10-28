@@ -25,13 +25,13 @@ class DataUtilities {
 	}
 
 	static subset(dataset, end, start = 0) {
-		console.log(dataset)
+		let data = Object.assign({}, dataset);
 		let rows = [];
 		for(let i = start; i < end; i++) {
-			rows.push(dataset['rows'][i]);
+			rows.push(data['rows'][i]);
 		}
-		dataset['rows'] = rows;
-		return dataset;
+		data['rows'] = rows;
+		return data;
 	}
 
 	static rowTitles(dataset) {

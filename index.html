@@ -9,23 +9,24 @@
 	</head>
 	<body>
 		<form role="navigation" data-navigation class="disclaimer-container">
-			<label for="reporting-year-selection">Reporting year:</label>
-			<select id="reporting-year-selection" data-year-selection>
+			<div data-combined-disclaimer class="disclaimer">
+				This view contains both <span class="validated">validated</span> and <span class="unvalidated">unvalidated</span> data. Calculations might seems incorrect. To only view unvalidated data, please check 'only show unvalidated data'.
+			</div>
+			<label for="reporting-year-selection" class="navigation__item">Reporting year:</label>
+			<select id="reporting-year-selection" data-year-selection class="navigation__item">
 			</select>
-			<input type="checkbox" id="unvalidated-only-checkbox" data-unvalidated-only-checkbox/>
-			<label for="unvalidated-only-checkbox">
+			<input type="checkbox" id="unvalidated-only-checkbox" data-unvalidated-only-checkbox class="navigation__item"/>
+			<label for="unvalidated-only-checkbox" class="navigation__item">
 				only show unvalidated data
 			</label>
 		</form>
 		<main class="layout">
-			<div data-combined-disclaimer class="layout__disclaimer disclaimer">
-				This view contains both validated and unvalidated data. Calculations might seems incorrect. To only view unvalidated data, please check 'only show unvalidated data'.
-			</div>
 			<div class="layout__title">
 				<h1>Validated / unvalidated</h1>
 			</div>
-			<div data-table class="layout__table legend-container">
-				<div class="legend" data-unvalidated-legend><span class="unvalidated">= unvalidated content</span></div>
+			<div class="layout__table">
+				<div data-table class="overflow-container"></div>
+				<div class="legend" data-unvalidated-legend><span class="unvalidated">* = unvalidated content</span></div>
 			</div>
 		</main>
 	</body>

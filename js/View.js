@@ -19,11 +19,19 @@ class View {
     }
 
     get displayData() {
+        const rowCount = this.data['unvalidated']['rows'].length;
+        const startRow = Number(this.reportingYearSelection.value);
+        let data = {};
+
         if(this.onlyUnvalidated.checked) {
-            return this.data['unvalidated'];
+            data = Object.assign({}, this.data['unvalidated']);
         } else {
-            return DataUtilities.combineData(this.data['validated'], this.data['unvalidated']);
+            data = Object.assign({}, DataUtilities.combineData(this.data['validated'], this.data['unvalidated']));
         }
+
+        data = DataUtilities.subset(data, rowCount, startRow);
+
+        return data;
     }
 
     get containsCombinedData () {
@@ -50,9 +58,9 @@ class View {
     }
 
     populateYearSelection (data) {
-        data.forEach(item => {
+        data.forEach((item, index) => {
             let option = document.createElement('option');
-            option.value = item;
+            option.value = index;
             option.text = item;
             this.reportingYearSelection.appendChild(option);
         });
