@@ -1,7 +1,6 @@
 class TableFactory {
 	static createTable(tableData) {
 		const tableEl = document.createElement('table');
-		tableEl.classList.add('line--subtle')
 		tableEl.appendChild(this.createTableHeader(tableData));
 		tableEl.appendChild(this.createTableFooter(tableData));
 		tableEl.appendChild(this.createTableBody(tableData));
@@ -15,7 +14,9 @@ class TableFactory {
 		for(const cellData in tableData['rows'][0]) {
 			const cellEl = document.createElement('th');
 			const spanEl = document.createElement('span');
-			spanEl.textContent = cellData;
+			if(cellData != 'title') {
+				spanEl.textContent = cellData;
+			}
 			cellEl.appendChild(spanEl);
 			tableHeader.appendChild(cellEl);
 		}
