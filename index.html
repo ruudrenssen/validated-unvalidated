@@ -8,20 +8,27 @@
 		<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 	</head>
 	<body>
-		<form role="navigation" data-navigation>
+		<form role="navigation" data-navigation class="disclaimer-container">
 			<label for="reporting-year-selection">Reporting year:</label>
 			<select id="reporting-year-selection" data-year-selection>
 			</select>
 			<input type="checkbox" id="unvalidated-only-checkbox" data-unvalidated-only-checkbox/>
 			<label for="unvalidated-only-checkbox">
-				only unvalidated data
+				only show unvalidated data
 			</label>
+			<div data-combined-disclaimer class="disclaimer">
+				This view contains both validated and unvalidated data. Calculations might seems incorrect. To only view unvalidated data, please check 'only show unvalidated data'.
+			</div>
 		</form>
 		<main class="layout">
 			<div class="layout__title">
-				<h1><span class="line--fat">Validated / unvalidated prototype</span></h1>
+				<h1>Crime in The Netherlands</h1>
 			</div>
-			<div data-table class="layout__table table-container"></div>
+			<div data-table class="layout__table">
+				<div class="overflow-container">
+
+				</div>
+			</div>
 		</main>
 	</body>
 	<script src='js/DataUtilities.js'></script>
