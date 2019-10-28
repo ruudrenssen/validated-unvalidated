@@ -94,6 +94,10 @@ tbody {
 	border-bottom: 1px solid var(--fg-color);
 }
 
+tr:hover {
+	background-color: var(--mark-color);
+}
+
 th,
 td {
 	text-align: right;
