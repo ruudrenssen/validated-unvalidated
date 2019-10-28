@@ -1,6 +1,7 @@
 class TableFactory {
 	static createTable(tableData) {
 		const tableEl = document.createElement('table');
+		tableEl.classList.add('line--subtle')
 		tableEl.appendChild(this.createTableHeader(tableData));
 		tableEl.appendChild(this.createTableFooter(tableData));
 		tableEl.appendChild(this.createTableBody(tableData));
@@ -13,7 +14,9 @@ class TableFactory {
 
 		for(const cellData in tableData['rows'][0]) {
 			const cellEl = document.createElement('th');
-			cellEl.textContent = cellData;
+			const spanEl = document.createElement('span');
+			spanEl.textContent = cellData;
+			cellEl.appendChild(spanEl);
 			tableHeader.appendChild(cellEl);
 		}
 
@@ -26,15 +29,15 @@ class TableFactory {
 		for(const cellData in tableData['rows'][0]) {
 			let elementType = 'td'
 			let cellEl = undefined;
-			
+
 			if(cellData == 'title') {
 				elementType = 'th';
 				cellEl = document.createElement(elementType);
 				cellEl.textContent = 'total';
 			} else {
 				cellEl = document.createElement(elementType);
-			}			
-			
+			}
+
 			cellEl.setAttribute('data-category', cellData);
 			cellEl.setAttribute('data-type', 'total');
 			tableFooter.appendChild(cellEl);

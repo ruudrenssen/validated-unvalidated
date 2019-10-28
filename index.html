@@ -8,12 +8,6 @@
 		<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 	</head>
 	<body>
-		<main class="layout">
-			<div class="layout__title">
-				<h1>Validated / unvalidated prototype</h1>
-			</div>
-			<div data-table class="layout__table table-container"></div>
-		</main>
 		<form role="navigation" data-navigation>
 			<label for="reporting-year-selection">Reporting year:</label>
 			<select id="reporting-year-selection" data-year-selection>
@@ -23,6 +17,12 @@
 				only unvalidated data
 			</label>
 		</form>
+		<main class="layout">
+			<div class="layout__title">
+				<h1><span class="line--fat">Validated / unvalidated prototype</span></h1>
+			</div>
+			<div data-table class="layout__table table-container"></div>
+		</main>
 	</body>
 	<script src='js/DataUtilities.js'></script>
 	<script src='js/Table.js'></script>
