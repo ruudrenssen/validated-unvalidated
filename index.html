@@ -8,27 +8,32 @@
 		<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 	</head>
 	<body>
-		<form role="navigation" data-navigation class="disclaimer-container">
-			<div data-combined-disclaimer class="disclaimer">
-				This view contains both <span class="validated">validated</span> and <span class="unvalidated">unvalidated</span> data. Calculations might seems incorrect. To only view unvalidated data, please check 'only show unvalidated data'.
-			</div>
-			<label for="reporting-year-selection" class="navigation__item">Reporting year:</label>
-			<select id="reporting-year-selection" data-year-selection class="navigation__item">
-			</select>
-			<input type="checkbox" id="unvalidated-only-checkbox" data-unvalidated-only-checkbox class="navigation__item"/>
-			<label for="unvalidated-only-checkbox" class="navigation__item">
-				only show unvalidated data
-			</label>
-		</form>
-		<main class="layout">
+		<main class="layout overflow-container">
 			<div class="layout__title">
-				<h1>Validated / unvalidated</h1>
+				<h1>Crime in The Netherlands</h1>
 			</div>
 			<div class="layout__table">
 				<div data-table class="overflow-container"></div>
-				<div class="legend" data-unvalidated-legend><span class="unvalidated">* = unvalidated content</span></div>
+				<div class="legend" data-unvalidated-legend><span class="unvalidated">* = unvalidated data</span></div>
 			</div>
 		</main>
+		<form role="navigation" data-navigation class="disclaimer-container">
+			<div data-combined-disclaimer class="disclaimer">
+				<p>This report <span data-disclaimer-year></span> contains both <span class="validated">validated</span> and <span class="unvalidated">unvalidated</span> data. Calculations might seems incorrect. To only view unvalidated data, please check 'only show unvalidated data'.</p>
+				<button type="button" data-disclaimer-close>I understand</button>
+			</div>
+			<nav>
+				<label for="reporting-year-selection">Reporting year:</label>
+				<select id="reporting-year-selection" data-year-selection>
+				</select>
+			</nav>
+			<nav>
+				<input type="checkbox" id="unvalidated-only-checkbox" data-unvalidated-only-checkbox />
+				<label for="unvalidated-only-checkbox">
+					only show unvalidated data
+				</label>
+			</nav>
+		</form>
 	</body>
 	<script src='js/DataUtilities.js'></script>
 	<script src='js/Table.js'></script>

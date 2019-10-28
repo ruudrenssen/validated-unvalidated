@@ -5,6 +5,8 @@ class View {
         this.reportingYearSelection = this.element.querySelector('[data-year-selection]');
         this.onlyUnvalidated = this.element.querySelector('[data-unvalidated-only-checkbox]');
         this.disclaimer = this.element.querySelector('[data-combined-disclaimer]');
+        this.disclaimerCloseBtn = this.element.querySelector('[data-disclaimer-close]');
+        this.disclaimerYear = this.element.querySelector('[data-disclaimer-year]');
         this.legend = this.element.querySelector('[data-unvalidated-legend]');
 
         this.tableEl = TableFactory.createTable(this.displayData);
@@ -12,10 +14,11 @@ class View {
         const container = element.querySelector('[data-table]');
         container.appendChild(this.tableEl);
 
-        this.element.querySelector('[data-navigation]').onchange = this.updateView.bind(this);
-
         this.populateYearSelection(DataUtilities.rowTitles(this.displayData));
         this.updateView();
+
+        this.element.querySelector('[data-navigation]').onchange = this.updateView.bind(this);
+        this.disclaimerCloseBtn.addEventListener('click', this.hideDisclaimer.bind(this))
     }
 
     get displayData() {
@@ -50,9 +53,15 @@ class View {
         }
     }
 
+    hideDisclaimer(e) {
+        this.showDisclaimer = false;
+        this.disclaimer.hidden = true;
+    }
+
     updateView(e) {
         this.tableUpdater.updateBody(this.displayData);
         this.tableUpdater.updateTotals();
+        this.disclaimerYear.textContent = `(${this.reportingYearSelection.options[this.reportingYearSelection.value].text})`;
         this.containsCombinedData ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
     }

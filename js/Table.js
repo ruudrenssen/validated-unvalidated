@@ -34,7 +34,7 @@ class TableFactory {
 			if(cellData == 'title') {
 				elementType = 'th';
 				cellEl = document.createElement(elementType);
-				cellEl.textContent = 'total';
+				cellEl.textContent = 'Total';
 			} else {
 				cellEl = document.createElement(elementType);
 			}
