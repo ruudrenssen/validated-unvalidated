@@ -12,9 +12,16 @@
 			<div class="layout__title">
 				<h1>Crime in The Netherlands</h1>
 			</div>
-			<div class="layout__table">
-				<div data-table class="overflow-container"></div>
+			<nav data-content-navigation class="layout__nav">
+				<button type="button" class="nav-button is-active" value="table">Table</button>
+				<button type="button" class="nav-button" value="chart">Chart</button>
+			</nav>
+			<div data-content="table" class="layout__main">
+				<div data-table-container class="overflow-container"></div>
 				<div class="legend" data-unvalidated-legend><span class="unvalidated">* = unvalidated data</span></div>
+			</div>
+			<div data-content="chart" class="layout__main">
+				chart goes here
 			</div>
 		</main>
 		<form role="navigation" data-navigation class="disclaimer-container">

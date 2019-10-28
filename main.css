@@ -2,7 +2,7 @@
 
 :root {
 	--dark-color: #222;
-	--light-color: #fff;
+	--light-color: #f5f5f5;
 	--mark-color: rgb(109, 252, 233);
 
 	font-size: .875rem;
@@ -55,11 +55,16 @@ span {
 }
 
 button {
-	padding: .4rem;
+	padding: .4rem .6rem;
 	color: var(--bg-color);
 	background-color: var(--fg-color);
 	font-weight: 600;
 	border: none;
+}
+
+button:not(.is-active) {
+	color: var(--fg-color);
+	background-color: var(--bg-color);
 }
 
 button:hover {
@@ -80,7 +85,6 @@ select, input {
 
 table {
 	border-collapse: collapse;
-	border-top: 2px solid var(--fg-color);
 	border-bottom: 2px solid var(--fg-color);
 }
 
@@ -122,9 +126,10 @@ td:last-child {
 	display: grid;
 	grid-template-areas: ". . ."
 	". title ."
-	". table ."
+	". nav ."
+	". main ."
 	". . .";
-	grid-template-rows: 1.6rem min-content auto 1fr;
+	grid-template-rows: 1.6rem min-content min-content auto 1fr;
 	grid-template-columns: 1fr auto 1fr;
 	padding: 1rem;
 }
@@ -134,10 +139,15 @@ td:last-child {
 	align-self: end;
 }
 
-.layout__table {
+.layout__nav {
+	grid-area: nav;
+}
+
+.layout__main {
 	display: grid;
 	grid-template-rows: auto 1.5rem;
-	grid-area: table;
+	grid-area: main;
+	border-top: 2px solid var(--fg-color);
 }
 
 .disclaimer-container {
@@ -227,6 +237,10 @@ td:last-child {
 	display: inline-block;
 	content: '*';
 	transform: translateY(-.4rem);
+}
+
+[hidden] {
+	visibility: hidden;
 }
 
 @media (min-width: 48rem) {
