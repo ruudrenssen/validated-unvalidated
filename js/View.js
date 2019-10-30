@@ -84,12 +84,13 @@ class View {
     }
 
     updateView(e) {
-        this.tableUpdater.updateBody(this.displayData);
+        const data = this.displayData
+        this.tableUpdater.updateBody(data);
         this.tableUpdater.updateTotals();
+        this.chartUpdater.updateChart(data);
         this.disclaimerYear.textContent = `(${this.reportingYearSelection.options[this.reportingYearSelection.value].text})`;
         this.containsCombinedData ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
-        this.chartUpdater.updateChart(this.displayData);
         this.showView(this.activeView);
     }
 

@@ -24,16 +24,17 @@ class ChartFactory {
 
 	static drawBars(data) {
 		let highestValue = DataUtilities.highestRowTotal(data);
+		let highestIndex = data['rows'].length;
 		let group = document.createElementNS('http://www.w3.org/2000/svg','g');
 		data['rows'].forEach((dataset, index) => {
-			group.appendChild(ChartFactory.drawBar(DataUtilities.TotalRow(dataset), index, highestValue));
+			group.appendChild(ChartFactory.drawBar(DataUtilities.TotalRow(dataset), index, highestValue, highestIndex));
 		});
 		return group;
 	}
 
-	static drawBar(value, index, highestValue) {
+	static drawBar(value, index, highestValue, highestIndex) {
 		const el = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-		const x = ((index + 1) * 2 - 2);
+		const x = ((highestIndex - index) * 2 - 2);
 		const y = highestValue - Number(value);
 		el.setAttribute('x', x);
 		el.setAttribute('y', y);
@@ -46,10 +47,12 @@ class ChartFactory {
 class ChartUpdater {
 	constructor(element) {
 		this.element = element;
-		this.parent = this.element.parentNode;
 	}
 
 	updateChart(data) {
-		this.element.parentNode.replaceChild(ChartFactory.createChart(data), this.element);
+		let parent = this.element.parentNode;
+		this.element.parentNode.removeChild(this.element);
+		this.element = ChartFactory.createChart(data);
+		parent.appendChild(this.element);
 	}
 }
