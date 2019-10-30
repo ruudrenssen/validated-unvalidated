@@ -51,4 +51,13 @@ class DataUtilities {
 		}
 		return total;
 	}
+
+	static highestRowTotal(data) {
+		let highestValue = 0;
+		data['rows'].forEach((row) => {
+			let rowTotal = this.TotalRow(row);
+			highestValue = (rowTotal > highestValue) ? rowTotal : highestValue;
+		});
+		return highestValue;
+	}
 }

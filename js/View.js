@@ -12,11 +12,12 @@ class View {
         this.contentNav = this.element.querySelector('[data-content-navigation]');
         this.contentElements = this.element.querySelectorAll('.layout__main');
 
+        const tableContainer = element.querySelector('[data-table-container]');
+        const chartContainer = element.querySelector('[data-chart-container]');
         this.tableEl = TableFactory.createTable(this.displayData);
         this.chartEl = ChartFactory.createChart(this.displayData);
         this.tableUpdater = new TableUpdater(this.tableEl);
-        const tableContainer = element.querySelector('[data-table-container]');
-        const chartContainer = element.querySelector('[data-chart-container]');
+        this.chartUpdater = new ChartUpdater(this.chartEl);
         tableContainer.appendChild(this.tableEl);
         chartContainer.appendChild(this.chartEl);
 
@@ -88,6 +89,7 @@ class View {
         this.disclaimerYear.textContent = `(${this.reportingYearSelection.options[this.reportingYearSelection.value].text})`;
         this.containsCombinedData ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
+        this.chartUpdater.updateChart(this.displayData);
         this.showView(this.activeView);
     }
 

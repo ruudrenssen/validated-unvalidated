@@ -2,7 +2,7 @@
 
 :root {
 	--dark-color: #222;
-	--light-color: #f5f5f5;
+	--light-color: #eeeeee;
 	--mark-color: rgb(109, 252, 233);
 
 	font-size: .875rem;
@@ -60,14 +60,24 @@ button {
 	background-color: var(--fg-color);
 	font-weight: 600;
 	border: none;
+	line-height: 1.6;
 }
 
-button:not(.is-active) {
+button:hover {
+	color: var(--bg-color);
+	background-color: var(--fg-color);
+	white-space: nowrap;
+}
+
+nav button {
+	margin: 0 .6rem 1rem 0;
+	cursor: pointer;
+	font-weight: 300;
 	color: var(--fg-color);
 	background-color: var(--bg-color);
 }
 
-button:hover {
+nav button.is-active {
 	color: var(--bg-color);
 	background-color: var(--fg-color);
 }
@@ -145,7 +155,7 @@ rect {
 	". main ."
 	". . .";
 	grid-template-rows: 1.6rem min-content min-content auto 1fr;
-	grid-template-columns: 1fr minmax(min-content, 640px) 1fr;
+	grid-template-columns: 1fr minmax(min-content, calc(768px - 2rem)) 1fr;
 	padding: 1rem;
 }
 
