@@ -11,6 +11,8 @@ class View {
         this.legend = this.element.querySelector('[data-unvalidated-legend]');
         this.contentNav = this.element.querySelector('[data-content-navigation]');
         this.contentElements = this.element.querySelectorAll('.layout__main');
+        this.reportChange = true;
+        this.disclaimerVisisble = true;
 
         const tableContainer = element.querySelector('[data-table-container]');
         const chartContainer = element.querySelector('[data-chart-container]');
@@ -24,9 +26,24 @@ class View {
         this.populateYearSelection(DataUtilities.rowTitles(this.displayData));
         this.updateView();
 
-        this.element.querySelector('[data-navigation]').onchange = this.updateView.bind(this);
+        this.element.querySelector('[data-navigation]').onchange = this.setDate.bind(this);
         this.contentNav.addEventListener('click', this.navigate.bind(this));
         this.disclaimerCloseBtn.addEventListener('click', this.hideDisclaimer.bind(this))
+    }
+
+    set showDisclaimer(value) {
+        this.disclaimerVisisble = value;
+    }
+
+    get showDisclaimer() {
+        console.log(this.disclaimerVisisble);
+        console.log(this.reportChange);
+        console.log(this.containsCombinedData);
+        if(this.disclaimerVisisble || (this.reportChange && this.containsCombinedData)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     get displayData() {
@@ -71,6 +88,11 @@ class View {
         return this.contentNav.querySelector('.is-active').value;
     }
 
+    setDate(e) {
+        this.reportChange = true;
+        this.updateView(e);
+    }
+
     navigate(e) {
         this.activeView = e.target.value;
     }
@@ -86,9 +108,10 @@ class View {
         this.tableUpdater.updateTotals();
         this.chartUpdater.updateChart(data);
         this.disclaimerYear.textContent = `(${this.reportingYearSelection.options[this.reportingYearSelection.value].text})`;
-        this.containsCombinedData ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
+        this.showDisclaimer ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
         this.showView(this.activeView);
+        this.reportChange = false;
     }
 
     showView(name) {
