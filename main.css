@@ -46,6 +46,12 @@ h1 {
 	line-height: 1;
 }
 
+h2 {
+	padding: 1rem 0 0 0;
+	font-size: 1.6rem;
+	font-weight: 600;
+}
+
 p {
 	margin-bottom: .6rem;
 }
@@ -64,15 +70,19 @@ button {
 }
 
 nav button {
-	margin: 0 .6rem 1rem 0;
+	margin: 0 .6rem 0 0;
 	cursor: pointer;
 	color: var(--fg-color);
 	background-color: var(--bg-color);
+	border-top: 2px solid var(--fg-color);
+	border-left: 2px solid var(--fg-color);
+	border-right: 2px solid var(--fg-color);
 }
 
 nav button.is-active {
 	color: var(--bg-color);
 	background-color: var(--fg-color);
+	border-color: transparent;
 }
 
 label {
@@ -169,7 +179,7 @@ text {
 
 .layout__main {
 	display: grid;
-	grid-template-rows: auto 1.5rem;
+	grid-template-rows: min-content min-content 1.5rem;
 	grid-area: main;
 	border-top: 2px solid var(--fg-color);
 }
