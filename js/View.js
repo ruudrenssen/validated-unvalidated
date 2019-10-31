@@ -33,15 +33,12 @@ class View {
         const rowCount = this.data['unvalidated']['rows'].length;
         const startRow = Number(this.reportingYearSelection.value);
         let data = {};
-
         if(this.onlyUnvalidated.checked) {
             data = Object.assign({}, this.data['unvalidated']);
         } else {
             data = Object.assign({}, DataUtilities.combineData(this.data['validated'], this.data['unvalidated']));
         }
-
         data = DataUtilities.subset(data, rowCount, startRow);
-
         return data;
     }
 
