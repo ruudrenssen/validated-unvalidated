@@ -4,32 +4,36 @@ class ChartFactory {
 	}
 
 	static createSvg(data) {
-		const container = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-		const el = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-		const periods = data['rows'].length;
-		const width = ((periods + 1) * 2 - 3);
-		const height = DataUtilities.highestRowTotal(data);
-
-		container.setAttribute('viewBox', `0 0 100 62`);
-
-		el.setAttribute('viewBox', `0 0 ${width} ${height}`);
-		el.setAttribute('preserveAspectRatio', `none`);
-
-		el.appendChild(ChartFactory.drawBars(data));
-
-		container.appendChild(el);
-
-		return container;
+		return ChartFactory.drawBars(data);
 	}
 
 	static drawBars(data) {
-		let highestValue = DataUtilities.highestRowTotal(data);
-		let highestIndex = data['rows'].length;
-		let group = document.createElementNS('http://www.w3.org/2000/svg','g');
+		const periods = data['rows'].length;
+		const width = ((periods + 1) * 2 - 3);
+		const height = DataUtilities.highestRowTotal(data);
+		const highestValue = DataUtilities.highestRowTotal(data);
+		const highestIndex = data['rows'].length;
+
+		const containerSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+		const barsContainerSvg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+		const labelsContainerSvg = document.createElementNS('http://www.w3.org/2000/svg','g');
+
+		containerSvg.setAttribute('viewBox', `0 0 500 310`);
+		barsContainerSvg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+		barsContainerSvg.setAttribute('height', `85%`);
+		barsContainerSvg.setAttribute('preserveAspectRatio', `none`);
+		// labelsContainerSvg.setAttribute('viewBox', `0 0 ${width} 24`);
+		labelsContainerSvg.setAttribute('preserveAspectRatio', `none`);
+
 		data['rows'].forEach((dataset, index) => {
-			group.appendChild(ChartFactory.drawBar(DataUtilities.TotalRow(dataset), index, highestValue, highestIndex));
+			DataUtilities.isUnvalidated(dataset);
+			barsContainerSvg.appendChild(ChartFactory.drawBar(DataUtilities.TotalRow(dataset), index, highestValue, highestIndex));
+			labelsContainerSvg.appendChild(ChartFactory.drawLabel(dataset['title'].value, index, highestIndex));
 		});
-		return group;
+
+		containerSvg.appendChild(barsContainerSvg);
+		containerSvg.appendChild(labelsContainerSvg);
+		return containerSvg;
 	}
 
 	static drawBar(value, index, highestValue, highestIndex) {
@@ -40,6 +44,16 @@ class ChartFactory {
 		el.setAttribute('y', y);
 		el.setAttribute('width', 1);
 		el.setAttribute('height', Number(value));
+		return el;
+	}
+
+	static drawLabel(title, index, highestIndex) {
+		const el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+		const x = (((highestIndex - index - .75) * 2) / (highestIndex * 2 - 1)) * 100;
+		el.textContent = title;
+		el.setAttribute('text-anchor', 'middle');
+		el.setAttribute('x', `${x}%`);
+		el.setAttribute('y', '90%');
 		return el;
 	}
 }

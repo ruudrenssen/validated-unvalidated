@@ -24,6 +24,16 @@ class DataUtilities {
 		return combinedData;
 	}
 
+	static isUnvalidated(dataset) {
+		let unvalidated = false;
+		for(let value in dataset) {
+			if(dataset[value].type === 'unvalidated') {
+				unvalidated = true;
+			}
+		}
+		return unvalidated;
+	}
+
 	static subset(dataset, end, start = 0) {
 		let data = Object.assign({}, dataset);
 		let rows = [];
