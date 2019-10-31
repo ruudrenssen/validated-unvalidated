@@ -26,7 +26,7 @@ class View {
         this.populateYearSelection(DataUtilities.rowTitles(this.displayData));
         this.updateView();
 
-        this.element.querySelector('[data-navigation]').onchange = this.setDate.bind(this);
+        this.element.querySelector('[data-navigation]').onchange = this.updateView.bind(this);
         this.contentNav.addEventListener('click', this.navigate.bind(this));
         this.disclaimerCloseBtn.addEventListener('click', this.hideDisclaimer.bind(this))
     }
@@ -38,8 +38,8 @@ class View {
     get showDisclaimer() {
         console.log(this.disclaimerVisisble);
         console.log(this.reportChange);
-        console.log(this.containsCombinedData);
-        if(this.disclaimerVisisble || (this.reportChange && this.containsCombinedData)) {
+        console.log(this.combineData);
+        if(this.disclaimerVisisble || (this.reportChange && this.combineData)) {
             return true;
         } else {
             return false;
@@ -91,6 +91,7 @@ class View {
     setDate(e) {
         this.reportChange = true;
         this.updateView(e);
+        this.reportChange = false;
     }
 
     navigate(e) {
@@ -111,7 +112,6 @@ class View {
         this.showDisclaimer ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
         this.showView(this.activeView);
-        this.reportChange = false;
     }
 
     showView(name) {
