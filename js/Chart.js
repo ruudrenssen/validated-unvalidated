@@ -26,9 +26,9 @@ class ChartFactory {
 		labelsContainerSvg.setAttribute('preserveAspectRatio', `none`);
 
 		data['rows'].forEach((dataset, index) => {
-			DataUtilities.isUnvalidated(dataset);
-			barsContainerSvg.appendChild(ChartFactory.drawBar(DataUtilities.TotalRow(dataset), index, highestValue, highestIndex));
-			labelsContainerSvg.appendChild(ChartFactory.drawLabel(dataset['title'].value, index, highestIndex));
+			const unvalidated = DataUtilities.isUnvalidated(dataset);
+			barsContainerSvg.appendChild(ChartFactory.drawBar(DataUtilities.TotalRow(dataset), index, highestValue, highestIndex, unvalidated));
+			labelsContainerSvg.appendChild(ChartFactory.drawLabel(dataset['title'].value, index, highestIndex, unvalidated));
 		});
 
 		containerSvg.appendChild(barsContainerSvg);
@@ -36,7 +36,7 @@ class ChartFactory {
 		return containerSvg;
 	}
 
-	static drawBar(value, index, highestValue, highestIndex) {
+	static drawBar(value, index, highestValue, highestIndex, unvalidated = false) {
 		const el = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 		const x = ((highestIndex - index) * 2 - 2);
 		const y = highestValue - Number(value);
@@ -44,16 +44,22 @@ class ChartFactory {
 		el.setAttribute('y', y);
 		el.setAttribute('width', 1);
 		el.setAttribute('height', Number(value));
+		if(unvalidated) {
+			el.classList.add('unvalidated');
+		}
 		return el;
 	}
 
-	static drawLabel(title, index, highestIndex) {
+	static drawLabel(title, index, highestIndex, unvalidated = false) {
 		const el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
 		const x = (((highestIndex - index - .75) * 2) / (highestIndex * 2 - 1)) * 100;
 		el.textContent = title;
 		el.setAttribute('text-anchor', 'middle');
 		el.setAttribute('x', `${x}%`);
 		el.setAttribute('y', '90%');
+		if(unvalidated) {
+			el.classList.add('unvalidated');
+		}
 		return el;
 	}
 }

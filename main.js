@@ -86,7 +86,7 @@ let unvalidatedData = {
 	'rows':[
 		{
 			'title': { 'value': '2018', 'type': 'title'},
-			'Fraud': { 'value': 457882, 'type': 'unvalidated'},
+			'Fraud': { 'value': 457982, 'type': 'unvalidated'},
 			'Vandalism': { 'value': 93263, 'type': 'unvalidated'},
 			'Traffic': { 'value': 116741, 'type': 'unvalidated'},
 			'Violence': { 'value': 83122, 'type': 'unvalidated'},
@@ -102,59 +102,59 @@ let unvalidatedData = {
 		},
 		{
 			'title': { 'value': '2016', 'type': 'title'},
-			'Fraud': { 'value': 576439, 'type': 'unvalidated'},
-			'Vandalism': { 'value': 115527, 'type': 'unvalidated'},
-			'Traffic': { 'value': 114834, 'type': 'unvalidated'},
-			'Violence': { 'value': 90196, 'type': 'unvalidated'},
-			'Posession': { 'value': 13259, 'type': 'unvalidated'}
+			'Fraud': { 'value': 576739, 'type': 'unvalidated'},
+			'Vandalism': { 'value': 115727, 'type': 'unvalidated'},
+			'Traffic': { 'value': 114934, 'type': 'unvalidated'},
+			'Violence': { 'value': 90696, 'type': 'unvalidated'},
+			'Posession': { 'value': 13959, 'type': 'unvalidated'}
 		},
 		{
 			'title': { 'value': '2015', 'type': 'title'},
-			'Fraud': { 'value': 614046, 'type': 'unvalidated'},
-			'Vandalism': { 'value': 122832, 'type': 'unvalidated'},
-			'Traffic': { 'value': 114731, 'type': 'unvalidated'},
-			'Violence': { 'value': 92473, 'type': 'unvalidated'},
-			'Posession': { 'value': 14776, 'type': 'unvalidated'}
+			'Fraud': { 'value': 612146, 'type': 'unvalidated'},
+			'Vandalism': { 'value': 121932, 'type': 'unvalidated'},
+			'Traffic': { 'value': 111751, 'type': 'unvalidated'},
+			'Violence': { 'value': 91493, 'type': 'unvalidated'},
+			'Posession': { 'value': 13796, 'type': 'unvalidated'}
 		},
 		{
 			'title': { 'value': '2014', 'type': 'title'},
-			'Fraud': { 'value': 631451, 'type': 'unvalidated'},
-			'Vandalism': { 'value': 135411, 'type': 'unvalidated'},
-			'Traffic': { 'value': 122153, 'type': 'unvalidated'},
-			'Violence': { 'value': 98542, 'type': 'unvalidated'},
-			'Posession': { 'value': 16313, 'type': 'unvalidated'}
+			'Fraud': { 'value': 632571, 'type': 'unvalidated'},
+			'Vandalism': { 'value': 136531, 'type': 'unvalidated'},
+			'Traffic': { 'value': 123353, 'type': 'unvalidated'},
+			'Violence': { 'value': 99682, 'type': 'unvalidated'},
+			'Posession': { 'value': 17513, 'type': 'unvalidated'}
 		},
 		{
 			'title': { 'value': '2013', 'type': 'title'},
-			'Fraud': { 'value': 690611, 'type': 'unvalidated'},
-			'Vandalism': { 'value': 141131, 'type': 'unvalidated'},
-			'Traffic': { 'value': 131332, 'type': 'unvalidated'},
-			'Violence': { 'value': 103509, 'type': 'unvalidated'},
-			'Posession': { 'value': 17036, 'type': 'unvalidated'}
+			'Fraud': { 'value': 691811, 'type': 'unvalidated'},
+			'Vandalism': { 'value': 142231, 'type': 'unvalidated'},
+			'Traffic': { 'value': 132432, 'type': 'unvalidated'},
+			'Violence': { 'value': 104609, 'type': 'unvalidated'},
+			'Posession': { 'value': 18136, 'type': 'unvalidated'}
 		},
 		{
 			'title': { 'value': '2012', 'type': 'title'},
-			'Fraud': { 'value': 704252, 'type': 'unvalidated'},
-			'Vandalism': { 'value': 162417, 'type': 'unvalidated'},
-			'Traffic': { 'value': 136927, 'type': 'unvalidated'},
-			'Violence': { 'value': 110471, 'type': 'unvalidated'},
-			'Posession': { 'value': 17577, 'type': 'unvalidated'}
+			'Fraud': { 'value': 702452, 'type': 'unvalidated'},
+			'Vandalism': { 'value': 161517, 'type': 'unvalidated'},
+			'Traffic': { 'value': 136027, 'type': 'unvalidated'},
+			'Violence': { 'value': 110571, 'type': 'unvalidated'},
+			'Posession': { 'value': 16577, 'type': 'unvalidated'}
 		},
 		{
 			'title': { 'value': '2011', 'type': 'title'},
-			'Fraud': { 'value': 723156, 'type': 'unvalidated'},
-			'Vandalism': { 'value': 182187, 'type': 'unvalidated'},
-			'Traffic': { 'value': 146712, 'type': 'unvalidated'},
-			'Violence': { 'value': 114052, 'type': 'unvalidated'},
-			'Posession': { 'value': 17132, 'type': 'unvalidated'}
+			'Fraud': { 'value': 724156, 'type': 'unvalidated'},
+			'Vandalism': { 'value': 183187, 'type': 'unvalidated'},
+			'Traffic': { 'value': 147712, 'type': 'unvalidated'},
+			'Violence': { 'value': 115052, 'type': 'unvalidated'},
+			'Posession': { 'value': 18132, 'type': 'unvalidated'}
 		},
 		{
 			'title': { 'value': '2010', 'type': 'title'},
-			'Fraud': { 'value': 715551, 'type': 'unvalidated'},
-			'Vandalism': { 'value': 185952, 'type': 'unvalidated'},
-			'Traffic': { 'value': 143917, 'type': 'unvalidated'},
-			'Violence': { 'value': 115813, 'type': 'unvalidated'},
-			'Posession': { 'value': 18032, 'type': 'unvalidated'}
+			'Fraud': { 'value': 714551, 'type': 'unvalidated'},
+			'Vandalism': { 'value': 184952, 'type': 'unvalidated'},
+			'Traffic': { 'value': 142917, 'type': 'unvalidated'},
+			'Violence': { 'value': 114813, 'type': 'unvalidated'},
+			'Posession': { 'value': 17032, 'type': 'unvalidated'}
 		},
 		{
 			'title': { 'value': '2009', 'type': 'title'},
