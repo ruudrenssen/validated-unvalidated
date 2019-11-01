@@ -22,6 +22,7 @@ class View {
         chartContainer.appendChild(this.chartEl);
 
         this.disclaimerHidden = false;
+        this.navigateCount = 0;
 
         this.populateYearSelection(DataUtilities.rowTitles(this.displayData));
         this.updateView();
@@ -96,7 +97,7 @@ class View {
     }
 
     updateView(e) {
-        const data = this.displayData
+        const data = this.displayData;
         this.tableUpdater.updateBody(data);
         this.tableUpdater.updateTotals();
         this.chartUpdater.updateChart(data);
@@ -104,6 +105,8 @@ class View {
         this.showDisclaimer ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
         this.showView(this.activeView);
+        this.navigateCount++;
+        console.log(this.navigateCount);
     }
 
     showView(name) {
