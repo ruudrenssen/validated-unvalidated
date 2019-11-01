@@ -11,11 +11,9 @@ class View {
         this.legend = this.element.querySelector('[data-unvalidated-legend]');
         this.contentNav = this.element.querySelector('[data-content-navigation]');
         this.contentElements = this.element.querySelectorAll('.layout__main');
-        this.reportChange = true;
-        this.disclaimerVisisble = true;
-
         const tableContainer = element.querySelector('[data-table-container]');
         const chartContainer = element.querySelector('[data-chart-container]');
+
         this.tableEl = TableFactory.createTable(this.displayData);
         this.chartEl = ChartFactory.createChart(this.displayData);
         this.tableUpdater = new TableUpdater(this.tableEl);
@@ -31,15 +29,9 @@ class View {
         this.disclaimerCloseBtn.addEventListener('click', this.hideDisclaimer.bind(this))
     }
 
-    set showDisclaimer(value) {
-        this.disclaimerVisisble = value;
-    }
-
     get showDisclaimer() {
-        console.log(this.disclaimerVisisble);
-        console.log(this.reportChange);
-        console.log(this.containsCombinedData);
-        if(this.disclaimerVisisble || (this.reportChange && this.containsCombinedData)) {
+        if(this.containsCombinedData) {
+            // has combined data, see whether user has already removed disclaimer
             return true;
         } else {
             return false;
@@ -89,7 +81,6 @@ class View {
     }
 
     setDate(e) {
-        this.reportChange = true;
         this.updateView(e);
     }
 
@@ -98,7 +89,6 @@ class View {
     }
 
     hideDisclaimer(e) {
-        this.showDisclaimer = false;
         this.disclaimer.hidden = true;
     }
 
@@ -111,7 +101,6 @@ class View {
         this.showDisclaimer ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
         this.showView(this.activeView);
-        this.reportChange = false;
     }
 
     showView(name) {
