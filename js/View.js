@@ -21,6 +21,8 @@ class View {
         tableContainer.appendChild(this.tableEl);
         chartContainer.appendChild(this.chartEl);
 
+        this.disclaimerHidden = false;
+
         this.populateYearSelection(DataUtilities.rowTitles(this.displayData));
         this.updateView();
 
@@ -30,8 +32,7 @@ class View {
     }
 
     get showDisclaimer() {
-        if(this.containsCombinedData) {
-            // has combined data, see whether user has already removed disclaimer
+        if(this.containsCombinedData && !this.disclaimerHidden) {
             return true;
         } else {
             return false;
@@ -81,6 +82,7 @@ class View {
     }
 
     setDate(e) {
+        this.disclaimerHidden = false;
         this.updateView(e);
     }
 
@@ -89,6 +91,7 @@ class View {
     }
 
     hideDisclaimer(e) {
+        this.disclaimerHidden = true;
         this.disclaimer.hidden = true;
     }
 
