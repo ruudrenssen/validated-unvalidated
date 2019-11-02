@@ -11,11 +11,9 @@ class View {
         this.legend = this.element.querySelector('[data-unvalidated-legend]');
         this.contentNav = this.element.querySelector('[data-content-navigation]');
         this.contentElements = this.element.querySelectorAll('.layout__main');
-        this.reportChange = true;
-        this.disclaimerVisisble = true;
-
         const tableContainer = element.querySelector('[data-table-container]');
         const chartContainer = element.querySelector('[data-chart-container]');
+
         this.tableEl = TableFactory.createTable(this.displayData);
         this.chartEl = ChartFactory.createChart(this.displayData);
         this.tableUpdater = new TableUpdater(this.tableEl);
@@ -23,23 +21,20 @@ class View {
         tableContainer.appendChild(this.tableEl);
         chartContainer.appendChild(this.chartEl);
 
+        this.disclaimerHidden = false;
+        this.navigateCount = 0;
+
         this.populateYearSelection(DataUtilities.rowTitles(this.displayData));
         this.updateView();
 
-        this.element.querySelector('[data-navigation]').onchange = this.updateView.bind(this);
+        this.element.querySelector('[data-navigation]').onchange = this.setDate.bind(this);
         this.contentNav.addEventListener('click', this.navigate.bind(this));
         this.disclaimerCloseBtn.addEventListener('click', this.hideDisclaimer.bind(this))
     }
 
-    set showDisclaimer(value) {
-        this.disclaimerVisisble = value;
-    }
-
     get showDisclaimer() {
-        console.log(this.disclaimerVisisble);
-        console.log(this.reportChange);
-        console.log(this.combineData);
-        if(this.disclaimerVisisble || (this.reportChange && this.combineData)) {
+        console.log(this.disclaimerHidden)
+        if(this.containsCombinedData && !this.disclaimerHidden) {
             return true;
         } else {
             return false;
@@ -89,22 +84,23 @@ class View {
     }
 
     setDate(e) {
-        this.reportChange = true;
+        this.disclaimerHidden = false;
         this.updateView(e);
-        this.reportChange = false;
     }
 
     navigate(e) {
-        this.activeView = e.target.value;
+        if(e.target.type === 'button') {
+            this.activeView = e.target.value;
+        }        
     }
 
     hideDisclaimer(e) {
-        this.showDisclaimer = false;
+        this.disclaimerHidden = true;
         this.disclaimer.hidden = true;
     }
 
     updateView(e) {
-        const data = this.displayData
+        const data = this.displayData;
         this.tableUpdater.updateBody(data);
         this.tableUpdater.updateTotals();
         this.chartUpdater.updateChart(data);
@@ -112,6 +108,8 @@ class View {
         this.showDisclaimer ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
         this.showView(this.activeView);
+        this.navigateCount++;
+        console.log(this.navigateCount);
     }
 
     showView(name) {

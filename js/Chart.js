@@ -22,8 +22,8 @@ class ChartFactory {
 		barsContainerSvg.setAttribute('viewBox', `0 0 ${width} ${height}`);
 		barsContainerSvg.setAttribute('height', `85%`);
 		barsContainerSvg.setAttribute('preserveAspectRatio', `none`);
-		// labelsContainerSvg.setAttribute('viewBox', `0 0 ${width} 24`);
-		labelsContainerSvg.setAttribute('preserveAspectRatio', `none`);
+		labelsContainerSvg.setAttribute('viewBox', `0 0 ${width} 24`);
+		labelsContainerSvg.setAttribute('preserveAspectRatio', `xMidYMid meet`);
 
 		data['rows'].forEach((dataset, index) => {
 			const unvalidated = DataUtilities.isUnvalidated(dataset);
