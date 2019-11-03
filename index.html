@@ -7,7 +7,7 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 	</head>
-	<body>
+	<body class="light-theme">
 		<main class="layout overflow-container">
 			<div class="layout__title">
 				<h1>Prototype: validated / unvalidated data</h1>
@@ -16,6 +16,7 @@
 			<nav data-content-navigation class="layout__nav">
 				<button type="button" class="nav-button is-active" value="table">Table</button>
 				<button type="button" class="nav-button" value="chart">Chart</button>
+				<button type="button" class="nav-button" value="about" hidden>Thank you!</button>
 			</nav>
 			<div data-content="table" class="layout__main">
 				<div data-table-container class="overflow-container"></div>
@@ -24,6 +25,19 @@
 			<div data-content="chart" class="layout__main">
 				<h3>Totals per year</h3>
 				<div data-chart-container></div>
+			</div>
+			<div data-content="about" class="layout__main overflow-container">
+				<div>
+					<h3>Thank you for viewing this prototype</h3>
+					<p>As you might remember, mixing of validated and unavlidated data never sat really well with me. However I am more and more convinced that we should embrace it. The client's explicit wish to do so (and the fact that no other client saw this differently), is a sign that I overestimated the importance of seperating the two data types. Combining both data types in one report has the following advantages:</p>
+					<ul>
+						<li>Navigation is easier to understand: no switching between report types</li>
+						<li>The date picker contains a lot more valid dates: there is no more seperation</li>
+						<li>Comparison between validated and unvalidated is much easier: the transition between the two is instant</li>
+					</ul>
+					<h3>But what if I only want to see validated data?</h3>
+					<p>In this example I tried to keep it as simple as possible. Assuming that all data will be be validated once, viewing a report with only validated data requires the user to pick a date far enough back in time (2016 in this example). But offering only validated data (i.e. hiding unvalidated data), would be easy: a simple checkbox 'only show validated data' would suffice.</p>
+				<div>
 			</div>
 		</main>
 		<form role="navigation" data-navigation class="disclaimer-container">

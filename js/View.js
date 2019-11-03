@@ -22,18 +22,19 @@ class View {
         chartContainer.appendChild(this.chartEl);
 
         this.disclaimerHidden = false;
-        this.navigateCount = 0;
+        this.dataChanged = 0;
+        this.typeChanged = 0;
+        this.contentChanged = 0;
 
         this.populateYearSelection(DataUtilities.rowTitles(this.displayData));
         this.updateView();
 
-        this.element.querySelector('[data-navigation]').onchange = this.setDate.bind(this);
+        this.element.querySelector('[data-navigation]').onchange = this.setReport.bind(this);
         this.contentNav.addEventListener('click', this.navigate.bind(this));
-        this.disclaimerCloseBtn.addEventListener('click', this.hideDisclaimer.bind(this))
+        this.disclaimerCloseBtn.addEventListener('click', this.hideDisclaimer.bind(this));        
     }
 
     get showDisclaimer() {
-        console.log(this.disclaimerHidden)
         if(this.containsCombinedData && !this.disclaimerHidden) {
             return true;
         } else {
@@ -83,15 +84,30 @@ class View {
         return this.contentNav.querySelector('.is-active').value;
     }
 
-    setDate(e) {
+    get showThankYou () {
+        return this.dataChanged > 0 && this.typeChanged > 0 && this.contentChanged > 0;
+    }
+
+    setReport(e) {
         this.disclaimerHidden = false;
+        switch (e.target.id) {
+            case 'unvalidated-only-checkbox':
+                this.typeChanged++;
+            break;
+            case 'reporting-year-selection':
+                this.dataChanged++;
+                break;
+            default:
+                break;
+        }
         this.updateView(e);
     }
 
     navigate(e) {
         if(e.target.type === 'button') {
+            this.contentChanged++;
             this.activeView = e.target.value;
-        }        
+        }       
     }
 
     hideDisclaimer(e) {
@@ -107,9 +123,8 @@ class View {
         this.disclaimerYear.textContent = `(${this.reportingYearSelection.options[this.reportingYearSelection.value].text})`;
         this.showDisclaimer ? this.disclaimer.hidden = false : this.disclaimer.hidden = true;
         this.containsUnvalidatedData ? this.legend.hidden = false : this.legend.hidden = true;
+        this.showThankYou ? this.contentNav.querySelector(['[value=about]']).hidden = false : this.contentNav.querySelector(['[value=about]']).hidden = true;
         this.showView(this.activeView);
-        this.navigateCount++;
-        console.log(this.navigateCount);
     }
 
     showView(name) {

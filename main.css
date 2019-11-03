@@ -18,9 +18,6 @@
 
 html, body {
 	height: 100%;
-
-	--fg-color: var(--dark-color);
-	--bg-color: var(--light-color);
 }
 
 body {
@@ -55,11 +52,18 @@ h2 {
 h3 {
 	padding: 1rem 0;
 	font-weight: 600;
+}
+
+[data-content="chart"] h3 {
 	text-align: center;
 }
 
 p {
 	margin-bottom: .6rem;
+}
+
+ul {
+	margin-left: 1rem;
 }
 
 span {
@@ -68,15 +72,11 @@ span {
 
 button {
 	padding: .4rem .6rem;
-	color: var(--bg-color);
-	background-color: var(--fg-color);
+	color: var(--light-color);
+	background-color: var(--dark-color);
 	font-weight: 600;
 	border: none;
 	line-height: 1.6;
-}
-
-button:hover {
-	--bg-color: var(--mark-color);
 }
 
 nav button {
@@ -158,6 +158,7 @@ rect {
 
 text {
 	font-size: .75rem;
+	fill: var(--fg-color);
 }
 
 .overflow-container {
@@ -201,7 +202,7 @@ text {
 	padding: .6rem;
 	margin: -.6rem 0 .6rem -.6rem;
 	font-weight: 300;
-	color: var(--fg-color);
+	color: var(--dark-color);
 	background-color: var(--mark-color);
 	width: 100%;
 }
@@ -247,6 +248,16 @@ text {
 
 .line {
 	border-top: 2px solid var(--fg-color);
+}
+
+.dark-theme {
+	--fg-color: var(--light-color);
+	--bg-color: var(--dark-color);
+}
+
+.light-theme {
+	--fg-color: var(--dark-color);
+	--bg-color: var(--light-color);
 }
 
 [data-year-selection] {
