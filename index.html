@@ -29,11 +29,11 @@
 			<div data-content="about" class="layout__main">
 				<div>
 					<h3>Thank you for viewing this prototype</h3>
-					<p>As you might remember, the mixing of validated and unavlidated data never sat well with me. However I am more and more convinced that we should embrace it. The client's explicit wish to do so (and the fact that no other client saw this differently), is a sign that I might have I overestimated the importance of seperating the two data types. Combining both data types in one report has the following advantages:</p>
+					<p>This prototype has a few advantages over how we currently deal with validated and unvalidated data:</p>
 					<ul>
 						<li>
 							<b>Navigation is easier to understand:</b><br>
-							No need to think about validated / unvalidated while choosing a date
+							No need to think about validated / unvalidated while choosing a date.
 						</li>
 						<li>
 							<b>The date picker is easier to use:</b><br>
@@ -41,7 +41,7 @@
 						</li>
 						<li>
 							<b>Information is easier to find:</b><br>
-							Because a report contains both validated and unvalidate data there are fewer empty states
+							Because a report contains both validated and unvalidate data, there are fewer empty states.
 						</li>
 						<li>
 							<b>Comparison between validated and unvalidated is easier:</b><br>
@@ -50,6 +50,10 @@
 					</ul>
 					<h3>But what if I only want to see validated data?</h3>
 					<p>I tried to keep this example as simple as possible. Assuming that all data will be be validated once, viewing a report with only validated data requires the user to pick a date far enough back in time (2016 in this example). But offering only validated data (i.e. hiding unvalidated data), would be easy. A simple checkbox <b>'only show validated data'</b> would suffice. Providing both options would make it a little more complex, but still very doable.</p>
+					<h3>Why this prototype?</h3>
+					<p>A year ago we thought of a way to display validated and unvalidated data. We choose to separate the data into different reports. Unfortunately, we did not anticipate ADPF’s wish to combine the data.</p>
+					<p>The whole combining of the data didn’t sit well with me. It broke the concept of separation, making the application harder to understand. However, combining the data was an explicit request from one of your clients. Moreover, other clients seem to agree with this (i.e. they didn’t request separated data). To me, this is a sign that I might have overestimated the importance of separating the data.</p>
+					<p>And then it struck me: we need to embrace the combination. By changing how we deal with validated and unvalidated data, we can have all the advantages of combining the data without the disadvantages we deal with now.</p>
 				<div>
 			</div>
 		</main>
