@@ -250,6 +250,10 @@ text {
 	border-top: 2px solid var(--fg-color);
 }
 
+.cta {
+	background-color: var(--mark-color);
+}
+
 .dark-theme {
 	--fg-color: var(--light-color);
 	--bg-color: var(--dark-color);
