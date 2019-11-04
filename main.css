@@ -159,9 +159,8 @@ svg {
 	height: 100%;
 }
 
-rect {
-	stroke: none;
-	fill: var(--fg-color);
+line {
+	stroke: var(--fg-color);
 }
 
 text {

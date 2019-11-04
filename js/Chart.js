@@ -8,10 +8,11 @@ class ChartFactory {
 	}
 
 	static drawBars(data) {
+		const multiplier = 100000; // in order to draw SVG neat in Edge
 		const periods = data['rows'].length;
 		const width = ((periods + 1) * 2 - 3);
-		const height = DataUtilities.highestRowTotal(data);
-		const highestValue = DataUtilities.highestRowTotal(data);
+		const height = DataUtilities.highestRowTotal(data) / multiplier;
+		const highestValue = DataUtilities.highestRowTotal(data) / multiplier;
 		const highestIndex = data['rows'].length;
 
 		const containerSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -27,7 +28,7 @@ class ChartFactory {
 
 		data['rows'].forEach((dataset, index) => {
 			const unvalidated = DataUtilities.isUnvalidated(dataset);
-			barsContainerSvg.appendChild(ChartFactory.drawBar(DataUtilities.TotalRow(dataset), index, highestValue, highestIndex, unvalidated));
+			barsContainerSvg.appendChild(ChartFactory.drawBar(DataUtilities.TotalRow(dataset), index, highestValue, highestIndex, unvalidated, multiplier));
 			labelsContainerSvg.appendChild(ChartFactory.drawLabel(dataset['title'].value, index, highestIndex, unvalidated));
 		});
 
@@ -36,14 +37,16 @@ class ChartFactory {
 		return containerSvg;
 	}
 
-	static drawBar(value, index, highestValue, highestIndex, unvalidated = false) {
-		const el = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+	static drawBar(value, index, highestValue, highestIndex, unvalidated = false, multiplier = 1) {
+		const el = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 		const x = ((highestIndex - index) * 2 - 2);
-		const y = highestValue - Number(value);
-		el.setAttribute('x', x);
-		el.setAttribute('y', y);
-		el.setAttribute('width', 1);
-		el.setAttribute('height', Number(value));
+		const y = highestValue - Number(value / multiplier);
+		el.setAttribute('x1', (x + .5));
+		el.setAttribute('x2', (x + .5));
+		el.setAttribute('y1', y);
+		el.setAttribute('y2', highestValue);
+		el.setAttribute('stroke-width', 1);
+		el.setAttribute('height', Number(value / multiplier));
 		if(unvalidated) {
 			el.classList.add('unvalidated');
 		}
