@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300i,600|IBM+Plex+Sans:400,600&display=swap');
 
 :root {
-	--dark-color: #222;
+	--dark-color: #124;
 	--light-color: #eeeeee;
-	--mark-color: #6dfce9;
+	--mark-color: #fc3;
 
 	font-size: .875rem;
 }
@@ -63,7 +63,15 @@ p {
 }
 
 ul {
-	margin-left: 1rem;
+	margin: 0 0 0 1rem;
+}
+
+li {
+	margin-bottom: .6rem;
+}
+
+b {
+	font-weight: 600;
 }
 
 span {
